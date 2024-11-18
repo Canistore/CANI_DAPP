@@ -1,0 +1,181 @@
+type Attribute = record { key : text; value : text };
+type AwardPrice = record { aid : text };
+type CanisterArgs = variant {
+  Upgrade : StateUpgradeArgs;
+  Init : StateInitArgs;
+};
+type Environment = variant { Production; Test };
+type LicensePrice = record {
+  track_id : nat64;
+  price : nat64;
+  token_name : text;
+};
+type MusicContentType = variant {
+  DJ;
+  MusicProducer;
+  Band;
+  MasteringEngineer;
+  GroupPerformer;
+  Songwriter;
+  StudioEngineer;
+  MusicComposer;
+  OrchestraMusician;
+  SessionMusician;
+  RecordingMixingEngineer;
+  Singer;
+};
+type NFT = record {
+  token_index : text;
+  canister_id : principal;
+  standard : text;
+};
+type PaymentInfo = record {
+  id : nat64;
+  token : text;
+  payment_type : PaymentType;
+  recipient : blob;
+  amount : nat64;
+  created_time : nat64;
+};
+type PaymentStatus = variant {
+  Refunded;
+  Paid;
+  Unpaid;
+  Cancelled;
+  TimedOut;
+  Verifying;
+};
+type PaymentType = variant {
+  Price : SubscriptionPrice;
+  CreationPrice : TokenPrice;
+  Verification : bool;
+  Award : AwardPrice;
+  LicensePrice : LicensePrice;
+};
+type QueryCommonReq = record { page : nat64; size : nat64; sort : QuerySort };
+type QueryOrder = record {
+  id : nat64;
+  status : PaymentStatus;
+  token : text;
+  payment_type : PaymentType;
+  source : text;
+  verified_time : opt nat64;
+  recipient : blob;
+  amount_paid : nat64;
+  payer : principal;
+  shared_time : opt nat64;
+  amount : nat64;
+  created_time : nat64;
+};
+type QueryOrderResp = record {
+  total : nat64;
+  data : vec QueryOrder;
+  page : nat64;
+  has_more : bool;
+};
+type QuerySort = variant { TimeAsc; TimeDesc };
+type Result = variant { Ok : text; Err : text };
+type Result_1 = variant { Ok : bool; Err : text };
+type Result_2 = variant { Ok : UserInfo; Err : text };
+type Result_3 = variant { Ok : opt PaymentInfo; Err : text };
+type Result_4 = variant { Ok : principal; Err : text };
+type StateInitArgs = record {
+  env : Environment;
+  indexer_canister_id : opt principal;
+  owner : principal;
+  name : text;
+  dao_canister_id : principal;
+};
+type StateUpgradeArgs = record {
+  env : opt Environment;
+  indexer_canister_id : opt principal;
+  owner : opt principal;
+  name : opt text;
+  dao_canister_id : opt principal;
+};
+type StatusRequest = record {
+  memory_size : bool;
+  cycles : bool;
+  heap_memory_size : bool;
+};
+type StatusResponse = record {
+  memory_size : opt nat64;
+  cycles : opt nat64;
+  heap_memory_size : opt nat64;
+};
+type SubscriptionPrice = record { price : nat64; sub_type : SubscriptionType };
+type SubscriptionType = variant {
+  Free;
+  Day180;
+  Day360;
+  Day30;
+  Day90;
+  Day1000;
+  Permanent;
+};
+type TokenPrice = record { price : nat64; token_name : text };
+type UpdateUserInfo = record {
+  bio : opt text;
+  born : opt nat64;
+  handler : opt text;
+  website : opt text;
+  artist_name : opt text;
+  genre : opt text;
+  music_content_type : opt MusicContentType;
+  location : opt text;
+  avatar : opt text;
+  confirm_agreement : opt bool;
+};
+type UserInfo = record {
+  bio : text;
+  nft : opt NFT;
+  pid : principal;
+  updated_at : nat64;
+  created : nat64;
+  born : opt nat64;
+  handler : text;
+  email : text;
+  website : text;
+  trusted_ecdsa_pub_key : opt blob;
+  artist_name : text;
+  genre : text;
+  spaces : vec UserSpaceInfo;
+  trusted_eddsa_pub_key : opt blob;
+  music_content_type : opt MusicContentType;
+  location : text;
+  avatar : text;
+  confirm_agreement : bool;
+};
+type UserSpaceInfo = record { oss_id : vec principal; space_id : principal };
+type WalletReceiveResult = record { accepted : nat64 };
+service : (opt CanisterArgs) -> {
+  __get_candid_interface_tmp_hack : () -> (text) query;
+  add_invite_code : (text) -> (Result);
+  add_user_attribute : (Attribute) -> (Result_1);
+  add_user_space_info : (principal, UserSpaceInfo) -> (Result_1);
+  admin_login : (principal) -> (Result_2);
+  canister_account : () -> (text, blob) query;
+  canister_get_status : (StatusRequest) -> (StatusResponse) query;
+  confirm_payment_order : (nat64) -> (Result_1);
+  create_payment_order : (text) -> (Result_3);
+  create_user_space_by_invite_code : (text) -> (Result_4);
+  create_user_space_by_payment : (nat64) -> (Result_4);
+  get_avatar : (opt principal) -> (text) query;
+  get_email : (opt principal) -> (text) query;
+  get_user_count : () -> (nat64) query;
+  get_user_info : (principal) -> (opt UserInfo) query;
+  get_user_infos : (vec principal) -> (vec UserInfo) query;
+  get_user_pids : () -> (vec principal) query;
+  get_user_spaces : (opt principal) -> (vec UserSpaceInfo) query;
+  profile : () -> (opt UserInfo) query;
+  query_orders : (QueryCommonReq) -> (QueryOrderResp) query;
+  refund_payment_order : (nat64, blob) -> (Result_1);
+  set_avatar : (text) -> (Result_1);
+  set_email : (text) -> (Result_1);
+  set_public_key : (opt blob, opt blob) -> (Result_1);
+  set_user_info : (UpdateUserInfo) -> (Result_1);
+  update_dao_canister : (principal) -> (Result_4);
+  user_login : () -> (Result_2);
+  wallet_balance : () -> (nat) query;
+  wallet_receive : () -> (WalletReceiveResult);
+}

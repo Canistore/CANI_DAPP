@@ -1,0 +1,125 @@
+type CanisterArgs = variant {
+  Upgrade : SpaceUpgradeArgs;
+  Init : SpaceInitArgs;
+};
+type CanisterArgs_1 = variant {
+  Upgrade : StateUpgradeArgs;
+  Init : StateInitArgs;
+};
+type CanisterDeploy = record {
+  deploy_at : nat64;
+  canister : principal;
+  wasm_hash : blob;
+  wasm_name : text;
+};
+type CertificateInfo = record {
+  key : text;
+  cert_info : MusicCertificate;
+  cert_hex : text;
+};
+type DaoStateInfo = record {
+  is_open : bool;
+  name : text;
+  platform_canister_id : principal;
+  user_canister_id : principal;
+  sub_canisters : vec CanisterDeploy;
+};
+type Environment = variant { Production; Test };
+type MusicCertificate = record {
+  title : text;
+  owner : principal;
+  artist : text;
+  unique_id : text;
+};
+type MusicCertificateResp = record { key : text; music_cert_hex : text };
+type MusicCopyright = record {
+  certificate : blob;
+  count : nat;
+  witness : blob;
+  music_cert_hex : text;
+};
+type OssInitArgs = record {
+  name : text;
+  default_admin_user : opt principal;
+  max_custom_data_size : nat16;
+  max_children : nat16;
+  enable_hash_index : bool;
+  max_file_size : nat64;
+  visibility : nat8;
+  max_folder_depth : nat8;
+  file_id : nat32;
+};
+type Result = variant { Ok : principal; Err : text };
+type Result_1 = variant { Ok : record { principal; principal }; Err : text };
+type Result_2 = variant { Ok : MusicCopyright; Err : text };
+type Result_3 = variant { Ok : CertificateInfo; Err : text };
+type Result_4 = variant { Ok : MusicCertificateResp; Err : text };
+type Result_5 = variant { Ok : bool; Err : text };
+type Result_6 = variant { Ok; Err : text };
+type SpaceInitArgs = record {
+  env : Environment;
+  status : nat8;
+  max_oss_data_size : nat;
+  owner : principal;
+  enable_search_index : bool;
+  max_albums : nat32;
+  name : text;
+  max_tracks : nat32;
+  max_custom_data_size : nat16;
+  dao_canister : principal;
+  visibility : nat8;
+};
+type SpaceOssCanisterArgs = record {
+  oss_arg : OssInitArgs;
+  space_arg : opt CanisterArgs;
+};
+type SpaceUpgradeArgs = record {
+  env : opt Environment;
+  status : opt nat8;
+  max_oss_data_size : opt nat;
+  enable_search_index : opt bool;
+  max_albums : opt nat32;
+  max_tracks : opt nat32;
+  max_custom_data_size : opt nat16;
+  dao_canister : opt principal;
+  visibility : opt nat8;
+};
+type StateInitArgs = record {
+  owner : principal;
+  name : text;
+  platform_canister_id : opt principal;
+  user_canister_id : principal;
+};
+type StateUpgradeArgs = record {
+  owner : opt principal;
+  name : opt text;
+  platform_canister_id : opt principal;
+  user_canister_id : opt principal;
+};
+type WalletReceiveResult = record { accepted : nat64 };
+service : (opt CanisterArgs_1) -> {
+  __get_candid_interface_tmp_hack : () -> (text) query;
+  create_oss_canister : (OssInitArgs) -> (Result);
+  create_space_and_oss_canister : (SpaceOssCanisterArgs) -> (Result_1);
+  create_space_canister : (opt CanisterArgs) -> (Result);
+  get_certificate : (text) -> (Result_2) query;
+  get_certificate_info : (text) -> (Result_3) query;
+  get_dao_info : () -> (DaoStateInfo) query;
+  get_user_space_info : (principal) -> (opt vec principal) query;
+  get_user_space_info_list : () -> (
+      vec record { principal; vec principal },
+    ) query;
+  store_certificate : (MusicCertificate) -> (Result_4);
+  update_is_open : (bool) -> (Result_5);
+  update_space_canister : (principal, vec principal) -> (Result_5);
+  update_user_canister : (principal) -> (Result);
+  upgrade_oss_canister : (principal, OssInitArgs) -> (Result_6);
+  upgrade_space_and_oss_canister : (
+      SpaceOssCanisterArgs,
+      principal,
+      principal,
+    ) -> (Result_6);
+  upgrade_space_canister : (principal, opt CanisterArgs) -> (Result_6);
+  wallet_balance : () -> (nat) query;
+  wallet_receive : () -> (WalletReceiveResult);
+}

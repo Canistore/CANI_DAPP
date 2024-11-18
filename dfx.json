@@ -1,0 +1,82 @@
+{
+  "canisters": {
+    "canistore_dao": {
+      "candid": "src/canistore_dao/canistore_dao.did",
+      "package": "canistore_dao",
+      "optimize": "cycles",
+      "type": "rust",
+      "init_arg": "opt variant { Init = record { name = \"Cani DAO\"; owner = principal \"xr4tj-xppkb-gimlp-62puo-pyheq-ksj3q-5p3fn-x6bwp-pellg-isj7a-6qe\"; user_canister_id = principal \"rzw6u-kqaaa-aaaag-al5ga-cai\"; platform_canister_id = opt principal \"myniu-wqaaa-aaaah-advna-cai\" }}"
+    },
+    "canistore_oss_bucket": {
+      "candid": "src/canistore_oss_bucket/canistore_oss_bucket.did",
+      "package": "canistore_oss_bucket",
+      "optimize": "cycles",
+      "type": "rust"
+    },
+    "canistore_space": {
+      "candid": "src/canistore_space/canistore_space.did",
+      "package": "canistore_space",
+      "type": "custom",
+      "wasm": "wasm/canistore_space.wasm.gz",
+      "init_arg": "opt variant { Init = record { status = 1; owner = principal \"tdfkf-xf7wx-b4qsu-6i425-temdg-kbxg5-eui42-xxnwb-mu23s-x5qlf-7ae\"; dao_canister = principal \"vght4-jyaaa-aaaag-aceyq-cai\"; enable_search_index = true; max_albums = 1000; name = \"MySpace\"; max_tracks = 20000; max_custom_data_size = 1024; visibility = 1; max_oss_data_size = 1099511627776:nat; env = variant { Test } }}"
+    },
+    "canistore_user": {
+      "candid": "src/canistore_user/canistore_user.did",
+      "package": "canistore_user",
+      "type": "custom",
+      "wasm": "wasm/canistore_user.wasm.gz",
+      "init_arg": "opt variant { Upgrade = record { name = null; owner = null; dao_canister_id = null; indexer_canister_id = null; env = null }}"
+    },
+    "canistore_platform": {
+      "candid": "src/canistore_platform/canistore_platform.did",
+      "package": "canistore_platform",
+      "optimize": "cycles",
+      "type": "rust"
+    },
+    "canistore_indexer": {
+      "candid": "src/canistore_indexer/canistore_indexer.did",
+      "package": "canistore_indexer",
+      "optimize": "cycles",
+      "type": "rust",
+      "init_arg": "opt variant { Init = record { name = \"Canistore Indexer\"; user_count = 0 : nat32; owner = principal \"xr4tj-xppkb-gimlp-62puo-pyheq-ksj3q-5p3fn-x6bwp-pellg-isj7a-6qe\" }}"
+    },
+    "canistore_frontend": {
+      "dependencies": ["canistore_dao"],
+      "source": ["src/canistore_frontend/dist"],
+      "type": "assets",
+      "workspace": "canistore_frontend"
+    },
+    "icp_ledger": {
+			"type": "custom",
+			"candid": "https://raw.githubusercontent.com/dfinity/ic/044cfd5147fc97d7e5a214966941b6580c325d72/rs/rosetta-api/icp_ledger/ledger.did",
+			"wasm": "https://download.dfinity.systems/ic/044cfd5147fc97d7e5a214966941b6580c325d72/canisters/ledger-canister.wasm.gz",
+			"remote": {
+				"id": {
+					"ic": "ryjl3-tyaaa-aaaaa-aaaba-cai"
+				}
+			},
+			"specified_id": "ryjl3-tyaaa-aaaaa-aaaba-cai",
+			"init_arg": "variant {Init = record { minting_account = \"2150ad47fb4eab6d02623438310bde2f35f6b798e0cb067383d34e31d94d19d7\"; initial_values = vec { record { \"2150ad47fb4eab6d02623438310bde2f35f6b798e0cb067383d34e31d94d19d7\"; record { e8s = 10_000_000_000 : nat64; }; }; }; send_whitelist = vec{}}}"
+		},
+		"cmc": {
+			"type": "custom",
+			"candid": "https://raw.githubusercontent.com/dfinity/ic/044cfd5147fc97d7e5a214966941b6580c325d72/rs/nns/cmc/cmc.did",
+			"wasm": "https://download.dfinity.systems/ic/044cfd5147fc97d7e5a214966941b6580c325d72/canisters/cycles-minting-canister.wasm.gz",
+			"remote": {
+				"id": {
+					"ic": "rkp4c-7iaaa-aaaaa-aaaca-cai"
+				}
+			},
+			"specified_id": "rkp4c-7iaaa-aaaaa-aaaca-cai",
+			"init_arg": "opt record { ledger_canister_id = opt principal \"ryjl3-tyaaa-aaaaa-aaaba-cai\"; minting_account_id = opt \"9aa2574febdc2a31054bb0cd3083e49ee37a176fd9b062f6f3d75cdf51bd2681\"; governance_canister_id = opt principal \"aaaaa-aa\"; last_purged_notification = opt 0 }"
+		}
+  },
+  "defaults": {
+    "build": {
+      "args": "",
+      "packtool": ""
+    }
+  },
+  "output_env_file": ".env",
+  "version": 1
+}

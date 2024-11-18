@@ -1,0 +1,50 @@
+type CanisterArgs = variant {
+  Upgrade : IndexerUpgradeArgs;
+  Init : IndexerInitArgs;
+};
+type IndexerInitArgs = record {
+  user_count : nat32;
+  owner : principal;
+  name : text;
+};
+type IndexerUpgradeArgs = record {
+  user_count : opt nat32;
+  owner : opt principal;
+};
+type Message = record {
+  payload_type : text;
+  msg_id : text;
+  msg_type : MessageType;
+  msg_resource : opt MessageSource;
+  timestamp : nat64;
+  caller : principal;
+  payload : blob;
+};
+type MessageSource = record {
+  canister_id : principal;
+  resource_type : text;
+  resource_id : nat64;
+};
+type MessageType = variant { Replace; Delete; Create; Update };
+type Result = variant { Ok : nat64; Err : text };
+type Result_1 = variant { Ok : text; Err : text };
+type WalletReceiveResult = record { accepted : nat64 };
+service : (opt CanisterArgs) -> {
+  __get_candid_interface_tmp_hack : () -> (text) query;
+  get_history_message_list : (text, nat64, nat64) -> (
+      vec record { Message; principal },
+    ) query;
+  get_message : (text, text) -> (opt record { Message; principal }) query;
+  get_message_keys : () -> (vec text) query;
+  get_message_list : (text, nat64, nat64) -> (
+      vec record { Message; principal },
+    ) query;
+  get_message_list_by_pid : (text, principal, nat64, nat64) -> (
+      vec record { Message; principal },
+    ) query;
+  get_message_size : () -> (vec record { text; nat64 }, nat64) query;
+  receive_batch_messages : (vec Message) -> (Result);
+  receive_message : (Message) -> (Result_1);
+  wallet_balance : () -> (nat) query;
+  wallet_receive : () -> (WalletReceiveResult);
+}

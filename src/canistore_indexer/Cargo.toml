@@ -1,0 +1,19 @@
+[package]
+name = "canistore_indexer"
+version = "0.1.0"
+edition = "2021"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[lib]
+crate-type = ["cdylib"]
+
+[dependencies]
+candid = { workspace = true }
+ciborium = { workspace = true }
+ic-cdk = { workspace = true }
+ic-cdk-timers = { workspace = true }
+serde = { workspace = true }
+ic-stable-structures = { workspace = true }
+canistore-types = { path = "../canistore_types", version = "0.1" }
+getrandom = { workspace = true }

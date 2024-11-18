@@ -1,0 +1,25 @@
+{
+  "canistore_dao": {
+    "ic": "tlcef-5iaaa-aaaas-akjmq-cai",
+    "local": "bkyz2-fmaaa-aaaaa-qaaaq-cai"
+  },
+  "canistore_indexer": {
+    "ic": "tqhya-hqaaa-aaaas-akjoa-cai",
+    "local": "br5f7-7uaaa-aaaaa-qaaca-cai"
+  },
+  "canistore_oss_bucket": {
+    "ic": "meklz-iyaaa-aaaah-aeboq-cai"
+  },
+  "canistore_platform": {
+    "ic": "tfajn-gyaaa-aaaas-akjnq-cai",
+    "local": "bw4dl-smaaa-aaaaa-qaacq-cai"
+  },
+  "canistore_space": {
+    "ic": "rw3cf-5iaaa-aaaah-aedlq-cai",
+    "local": "bkyz2-fmaaa-aaaaa-qaaaq-cai"
+  },
+  "canistore_user": {
+    "ic": "tcbpz-laaaa-aaaas-akjna-cai",
+    "local": "be2us-64aaa-aaaaa-qaabq-cai"
+  }
+}
