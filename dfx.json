@@ -7,12 +7,6 @@
       "type": "rust",
       "init_arg": "opt variant { Init = record { name = \"Cani DAO\"; owner = principal \"xr4tj-xppkb-gimlp-62puo-pyheq-ksj3q-5p3fn-x6bwp-pellg-isj7a-6qe\"; user_canister_id = principal \"rzw6u-kqaaa-aaaag-al5ga-cai\"; platform_canister_id = opt principal \"myniu-wqaaa-aaaah-advna-cai\" }}"
     },
-    "canistore_oss_bucket": {
-      "candid": "src/canistore_oss_bucket/canistore_oss_bucket.did",
-      "package": "canistore_oss_bucket",
-      "optimize": "cycles",
-      "type": "rust"
-    },
     "canistore_space": {
       "candid": "src/canistore_space/canistore_space.did",
       "package": "canistore_space",
