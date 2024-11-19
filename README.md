@@ -4,15 +4,15 @@
 
 Cani DAO is a decentralized platform based on the Internet Computer (IC) network, designed for independent musicians to manage music storage and licensing through a DAO organization. The platform consists of several key components:
 
-1. canistore_dao: This module is responsible for managing the DAO organization, including the creation and governance of user music spaces. It facilitates the overall coordination of the Canistore ecosystem, ensuring decentralized decision-making and governance.
+1. cani_dao: This module is responsible for managing the DAO organization, including the creation and governance of user music spaces. It facilitates the overall coordination of the Canistore ecosystem, ensuring decentralized decision-making and governance.
 
-2. canistore_space: This component represents the personal music space of an artist. It is where individual musicians can manage their music collections, albums, songs, licensing, and charging services. Each artist’s personal space serves as their dedicated environment for organizing and distributing their creative works.
+2. cani_id_domain(identity domain): This component represents the personal music space of an artist. It is where individual musicians can manage their music collections, albums, songs, licensing, and charging services. Each artist’s personal space serves as their dedicated environment for organizing and distributing their creative works.
 
-3. canistore_oss_bucket: This is the cloud storage service for music files, providing a scalable and secure way to store the actual audio content. It supports streaming services, allowing the stored music files to be accessed and distributed efficiently. There is a one-to-many relationship between canistore_space and canistore_oss_bucket, where each artist’s space can link to multiple storage buckets.
+3. cani_oss_bucket: This is the cloud storage service for music files, providing a scalable and secure way to store the actual audio content. It supports streaming services, allowing the stored music files to be accessed and distributed efficiently. There is a one-to-many relationship between canistore_space and canistore_oss_bucket, where each artist’s space can link to multiple storage buckets.
 
-4. canistore_user: This is the user management center of the platform. It handles authentication and login services for both musicians and regular users. The platform supports multiple login methods, ensuring flexibility for all types of users to access their accounts.
+4. cani_user: This is the user management center of the platform. It handles authentication and login services for both musicians and regular users. The platform supports multiple login methods, ensuring flexibility for all types of users to access their accounts.
 
-5. canistore_indexer: This component functions as the platform’s indexing service. It indexes information related to musicians, music resources, and users, enabling efficient matching and querying. The indexer plays a crucial role in powering the search functionality for the music portal, helping users to discover musicians and their works through a well-organized resource index.
+5. cani_indexer: This component functions as the platform’s indexing service. It indexes information related to musicians, music resources, and users, enabling efficient matching and querying. The indexer plays a crucial role in powering the search functionality for the music portal, helping users to discover musicians and their works through a well-organized resource index.
 
 ```
 canistore_dao(DAO)
@@ -248,7 +248,7 @@ This approach showcases how IC can revolutionize cloud storage and media streami
 
 ## System Deploy
 
-### canistore_dao
+### cani_dao
 
 ```bash
 
@@ -256,7 +256,7 @@ dfx deploy canistore_dao --argument '(opt record { name = "Canistore DAO"; owner
 
 ```
 
-### canistore_platform
+### cani_platform
 
 ```bash
 
@@ -267,7 +267,7 @@ dfx deploy canistore_platform --argument "(opt variant { Upgrade = record { owne
 
 ```
 
-### canistore_user
+### cani_user
 
 ```bash
 
@@ -280,13 +280,13 @@ dfx deploy canistore_user --argument '(opt record { name = "Canistore User Cente
 
 ### PROD
 
-canistore_dao: https://a4gq6-oaaaa-aaaab-qaa4q-cai.raw.icp0.io/?id=tlcef-5iaaa-aaaas-akjmq-cai
+cani_dao: https://a4gq6-oaaaa-aaaab-qaa4q-cai.raw.icp0.io/?id=tlcef-5iaaa-aaaas-akjmq-cai
 
-canistore_indexer: https://a4gq6-oaaaa-aaaab-qaa4q-cai.raw.icp0.io/?id=tqhya-hqaaa-aaaas-akjoa-cai
+cani_indexer: https://a4gq6-oaaaa-aaaab-qaa4q-cai.raw.icp0.io/?id=tqhya-hqaaa-aaaas-akjoa-cai
 
-canistore_platform: https://a4gq6-oaaaa-aaaab-qaa4q-cai.raw.icp0.io/?id=tfajn-gyaaa-aaaas-akjnq-cai
+cani_platform: https://a4gq6-oaaaa-aaaab-qaa4q-cai.raw.icp0.io/?id=tfajn-gyaaa-aaaas-akjnq-cai
 
-canistore_user: https://a4gq6-oaaaa-aaaab-qaa4q-cai.raw.icp0.io/?id=tcbpz-laaaa-aaaas-akjna-cai
+cani_user: https://a4gq6-oaaaa-aaaab-qaa4q-cai.raw.icp0.io/?id=tcbpz-laaaa-aaaas-akjna-cai
 
 ```
 
