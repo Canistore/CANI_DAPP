@@ -35,35 +35,39 @@
       "init_arg": "opt variant { Init = record { name = \"Canistore Indexer\"; user_count = 0 : nat32; owner = principal \"xr4tj-xppkb-gimlp-62puo-pyheq-ksj3q-5p3fn-x6bwp-pellg-isj7a-6qe\" }}"
     },
     "canistore_frontend": {
-      "dependencies": ["canistore_dao"],
-      "source": ["src/canistore_frontend/dist"],
+      "dependencies": [
+        "canistore_dao"
+      ],
+      "source": [
+        "src/canistore_frontend/dist"
+      ],
       "type": "assets",
       "workspace": "canistore_frontend"
     },
     "icp_ledger": {
-			"type": "custom",
-			"candid": "https://raw.githubusercontent.com/dfinity/ic/044cfd5147fc97d7e5a214966941b6580c325d72/rs/rosetta-api/icp_ledger/ledger.did",
-			"wasm": "https://download.dfinity.systems/ic/044cfd5147fc97d7e5a214966941b6580c325d72/canisters/ledger-canister.wasm.gz",
-			"remote": {
-				"id": {
-					"ic": "ryjl3-tyaaa-aaaaa-aaaba-cai"
-				}
-			},
-			"specified_id": "ryjl3-tyaaa-aaaaa-aaaba-cai",
-			"init_arg": "variant {Init = record { minting_account = \"2150ad47fb4eab6d02623438310bde2f35f6b798e0cb067383d34e31d94d19d7\"; initial_values = vec { record { \"2150ad47fb4eab6d02623438310bde2f35f6b798e0cb067383d34e31d94d19d7\"; record { e8s = 10_000_000_000 : nat64; }; }; }; send_whitelist = vec{}}}"
-		},
-		"cmc": {
-			"type": "custom",
-			"candid": "https://raw.githubusercontent.com/dfinity/ic/044cfd5147fc97d7e5a214966941b6580c325d72/rs/nns/cmc/cmc.did",
-			"wasm": "https://download.dfinity.systems/ic/044cfd5147fc97d7e5a214966941b6580c325d72/canisters/cycles-minting-canister.wasm.gz",
-			"remote": {
-				"id": {
-					"ic": "rkp4c-7iaaa-aaaaa-aaaca-cai"
-				}
-			},
-			"specified_id": "rkp4c-7iaaa-aaaaa-aaaca-cai",
-			"init_arg": "opt record { ledger_canister_id = opt principal \"ryjl3-tyaaa-aaaaa-aaaba-cai\"; minting_account_id = opt \"9aa2574febdc2a31054bb0cd3083e49ee37a176fd9b062f6f3d75cdf51bd2681\"; governance_canister_id = opt principal \"aaaaa-aa\"; last_purged_notification = opt 0 }"
-		}
+      "type": "custom",
+      "candid": "https://raw.githubusercontent.com/dfinity/ic/044cfd5147fc97d7e5a214966941b6580c325d72/rs/rosetta-api/icp_ledger/ledger.did",
+      "wasm": "https://download.dfinity.systems/ic/044cfd5147fc97d7e5a214966941b6580c325d72/canisters/ledger-canister.wasm.gz",
+      "remote": {
+        "id": {
+          "ic": "ryjl3-tyaaa-aaaaa-aaaba-cai"
+        }
+      },
+      "specified_id": "ryjl3-tyaaa-aaaaa-aaaba-cai",
+      "init_arg": "variant {Init = record { minting_account = \"2150ad47fb4eab6d02623438310bde2f35f6b798e0cb067383d34e31d94d19d7\"; initial_values = vec { record { \"2150ad47fb4eab6d02623438310bde2f35f6b798e0cb067383d34e31d94d19d7\"; record { e8s = 10_000_000_000 : nat64; }; }; }; send_whitelist = vec{}}}"
+    },
+    "cmc": {
+      "type": "custom",
+      "candid": "https://raw.githubusercontent.com/dfinity/ic/044cfd5147fc97d7e5a214966941b6580c325d72/rs/nns/cmc/cmc.did",
+      "wasm": "https://download.dfinity.systems/ic/044cfd5147fc97d7e5a214966941b6580c325d72/canisters/cycles-minting-canister.wasm.gz",
+      "remote": {
+        "id": {
+          "ic": "rkp4c-7iaaa-aaaaa-aaaca-cai"
+        }
+      },
+      "specified_id": "rkp4c-7iaaa-aaaaa-aaaca-cai",
+      "init_arg": "opt record { ledger_canister_id = opt principal \"ryjl3-tyaaa-aaaaa-aaaba-cai\"; minting_account_id = opt \"9aa2574febdc2a31054bb0cd3083e49ee37a176fd9b062f6f3d75cdf51bd2681\"; governance_canister_id = opt principal \"aaaaa-aa\"; last_purged_notification = opt 0 }"
+    }
   },
   "defaults": {
     "build": {
