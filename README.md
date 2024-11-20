@@ -1,7 +1,7 @@
 # `Cani DAO`
 
 ## Architecture Overview
-------------------------
+
 Cani DAO is a decentralized platform based on the Internet Computer (IC) network, designed for independent musicians to manage music storage and licensing through a DAO organization.
 
 
@@ -31,9 +31,11 @@ canistore_dao(DAO)
                                                    |-- Provides Search & Matching --> Music Portal
 ```
 
+
+
 ## Resource Authorization Architecture
---------------------------------------
-refers to the framework and design principles used to manage, control, and enforce access permissions for resources within CaniSafe. This architecture ensures that only authorized users, applications, or systems can access specific resources based on content policies and owner consent.
+
+It refers to the framework and design principles used to manage, control, and enforce access permissions for resources within CaniSafe. This architecture ensures that only authorized users, applications, or systems can access specific resources based on content policies and owner consent.
 
 
 ```
@@ -81,8 +83,8 @@ Flow:
 7. [Transparency and Auditing] Verifiable and auditable signatures on-chain
 
 
+
 ## Music Certificate System (MCS)
----------------------------------
 
 The MCS utilizes blockchain to create and issue certificates of ownership and copyright through hashing. The method guarantees that each musical work is assigned a unique, tamper-resistant digital record, providing verification of its authenticity and ownership.
 
@@ -168,7 +170,6 @@ The MCS utilizes blockchain to create and issue certificates of ownership and co
 
 
 ## Decentralized Messaging
---------------------------
 
 Decentralized Messaging refers to communication platforms or systems that operate without relying on a central authority or server. Instead, the system uses Internet Computer (IC) networks and peer-to-peer (P2P) protocols to facilitate secure, private, and censorship-resistant communication.
 
@@ -235,6 +236,8 @@ The Decentralized Messaging System is a decentralized message management solutio
 - **Tiered Message Storage**: Dual-layer storage (Recent and Historical) ensures quick message retrieval and allows for excellent storage scalability.
 - **Efficient Message Retrieval**: With the combined indexing capabilities of the Message Index Center and synchronized queue modules, the system enables dynamic, aggregated message retrieval, supporting a variety of query needs for users.
 
+
+
 ## IC-Based OSS Cloud Storage and Music Streaming
 
 The **IC-based OSS Cloud Storage and Music Streaming System** is designed for secure, decentralized storage of large media files, specifically for music and audio. Leveraging the Internet Computer (IC) infrastructure, this solution utilizes decentralized Object Storage Service (OSS) canisters to store and retrieve audio data, while implementing **HttpStreamingResponse** for efficient, on-demand music streaming to users.
@@ -292,7 +295,8 @@ dfx deploy canistore_user --argument '(opt record { name = "Canistore User Cente
 
 
 ## Backend canisters via Candid interface
------------------------------------------
+
+Canister ID list:
 
 ### PROD
 
