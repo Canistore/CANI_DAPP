@@ -1,35 +1,40 @@
 # `Cani DAO`
 
 ## Architecture Overview
+------------------------
+Cani DAO is a decentralized platform based on the Internet Computer (IC) network, designed for independent musicians to manage music storage and licensing through a DAO organization.
 
-Cani DAO is a decentralized platform based on the Internet Computer (IC) network, designed for independent musicians to manage music storage and licensing through a DAO organization. The platform consists of several key components:
+
+The platform consists of several key components:
 
 1. cani_dao: This module is responsible for managing the DAO organization, including the creation and governance of user music spaces. It facilitates the overall coordination of the Canistore ecosystem, ensuring decentralized decision-making and governance.
 
-2. cani_id_domain(identity domain): This component represents the personal music space of an artist. It is where individual musicians can manage their music collections, albums, songs, licensing, and charging services. Each artist’s personal space serves as their dedicated environment for organizing and distributing their creative works.
+2. cani_id_domain(identity domain): This component represents the personal music space of an artist. It is where individual musicians can manage their music collections, albums, songs, licensing, and monetization services. Each artist’s personal domain serves as their dedicated environment for organizing and distributing their creative works.
 
-3. cani_oss_bucket: This is the cloud storage service for music files, providing a scalable and secure way to store the actual audio content. It supports streaming services, allowing the stored music files to be accessed and distributed efficiently. There is a one-to-many relationship between canistore_space and canistore_oss_bucket, where each artist’s space can link to multiple storage buckets.
+3. cani_oss_bucket: This is the cloud storage service for music files, providing a scalable and secure way to store the actual audio content. It supports streaming services, allowing the stored music files to be accessed and distributed efficiently. There is a one-to-many relationship between canistore_id_domain and canistore_oss_bucket, where each artist’s space can link to multiple storage buckets. Furthermore, the storage is deployed on the EU subnet to ensure compliance with GDPR regulations.
 
-4. cani_user: This is the user management center of the platform. It handles authentication and login services for both musicians and regular users. The platform supports multiple login methods, ensuring flexibility for all types of users to access their accounts.
+4. cani_user: This is the user management center of the platform. It handles authentication and login services for both musicians and regular users. The platform integrates Internet Identity, providing secure access for users of all types to manage their accounts.
 
 5. cani_indexer: This component functions as the platform’s indexing service. It indexes information related to musicians, music resources, and users, enabling efficient matching and querying. The indexer plays a crucial role in powering the search functionality for the music portal, helping users to discover musicians and their works through a well-organized resource index.
 
 ```
 canistore_dao(DAO)
    |
-   |-- Manages & Creates --> canistore_space
+   |-- Manages & Creates --> canis_domain
                               |
-                              |-- One-to-Many --> canistore_oss_bucket (Cloud Storage & Streaming)
+                              |-- One-to-Many --> cani_oss_bucket (Cloud Storage & Streaming)
                               |
-                              |-- Authenticated by --> canistore_user (User & Musician Management)
+                              |-- Authenticated by --> cani_user (User & Musician Management)
                               |
-                              |-- Indexed by --> canistore_indexer (Resource Indexing)
+                              |-- Indexed by --> cani_indexer (Resource Indexing)
                                                    |
                                                    |-- Provides Search & Matching --> Music Portal
 ```
 
 ## Resource Authorization Architecture
----------------------------------------
+--------------------------------------
+refers to the framework and design principles used to manage, control, and enforce access permissions for resources within CaniSafe. This architecture ensures that only authorized users, applications, or systems can access specific resources based on content policies and owner consent.
+
 
 ```
 +----------------------+              +--------------------+
@@ -75,11 +80,15 @@ Flow:
 6. Enhanced Security: Leveraging threshold cryptography for superior key protection.
 7. Transparency and Auditing: Verifiable and auditable signatures on-chain.
 
-## Music Certificate System Technology and Advantages
 
-### Isntroduce
+## Music Certificate System (MCS)
+---------------------------------
 
-1. The **music copyright certificate** consists of **music creation data** and the **CRC information** of the music file. This combination ensures both the authenticity of the creative work and the integrity of the music file.
+The MCS utilizes blockchain to create and issue certificates of ownership and copyright through hashing. The method guarantees that each musical work is assigned a unique, tamper-resistant digital record, providing verification of its authenticity and ownership.
+
+### Introduction
+
+1. The **Music Copyright Certificate** consists of **music creation data** and the **CRC information** of the music file. This combination ensures both the authenticity of the creative work and the integrity of the music file.
 
 2. The copyright information is hashed using a **cryptographic algorithm** to generate a **copyright hash**.
 
@@ -124,7 +133,7 @@ Flow:
 +-------------------------------+
 ```
 
-### Technology
+### Implementation
 
 1. **Hashing**: Utilizes cryptographic hashing to generate unique identifiers for music files, ensuring authenticity.
 
@@ -156,9 +165,15 @@ Flow:
 
 7. **Verification**: Users can verify the authenticity of the copyright hash by comparing it against the Merkle tree root or by querying the music metadata from the DAO canister, ensuring that their copyright certificate remains valid and authenticated.
 
-## Decentralized Messaging
 
-### Isntroduce
+
+## Decentralized Messaging
+--------------------------
+
+Decentralized Messaging refers to communication platforms or systems that operate without relying on a central authority or server. Instead, the system uses Internet Computer(IC) networks and peer-to-peer (P2P) protocols to facilitate secure, private, and censorship-resistant communication.
+
+
+### Introduction
 
 The Decentralized Messaging System is a decentralized message management solution designed to provide unified message storage and efficient retrieval services for distributed user applications. Each user app canister sends messages through an embedded synchronized message queue to the central message index (Message Index Center Canister), which dynamically indexes and categorizes received messages. The system divides messages into "Recent Messages" and "Historical Messages" categories, where only the latest 6000 messages are kept in the recent messages storage, and messages exceeding this limit are moved to historical storage. This design optimizes retrieval efficiency while ensuring scalable data management.
 
@@ -200,7 +215,7 @@ The Decentralized Messaging System is a decentralized message management solutio
              +-----------------------+           +-----------------------+
 ```
 
-### Technology
+### Implementation
 
 1. **User App Canister**
    - **Overview**: Each user has their own application canister, responsible for generating and sending messages. Inside each `User App Canister` is an embedded **Synchronized Message Queue** module, which securely transfers messages to the Message Index Center.
@@ -276,7 +291,8 @@ dfx deploy canistore_user --argument '(opt record { name = "Canistore User Cente
 ```
 
 
-## Backend canister via Candid interface
+## Backend canisters via Candid interface
+-----------------------------------------
 
 ### PROD
 
