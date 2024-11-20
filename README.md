@@ -9,7 +9,7 @@ The platform consists of several key components:
 
 1. cani_dao: This module is responsible for managing the DAO organization, including the creation and governance of user music spaces. It facilitates the overall coordination of the Canistore ecosystem, ensuring decentralized decision-making and governance.
 
-2. cani_id_domain(identity domain): This component represents the personal music space of an artist. It is where individual musicians can manage their music collections, albums, songs, licensing, and monetization services. Each artist’s personal domain serves as their dedicated environment for organizing and distributing their creative works.
+2. cani_id_domain (identity domain): This component represents the personal music space of an artist. It is where individual musicians can manage their music collections, albums, songs, licensing, and monetization services. Each artist’s personal domain serves as their dedicated environment for organizing and distributing their creative works.
 
 3. cani_oss_bucket: This is the cloud storage service for music files, providing a scalable and secure way to store the actual audio content. It supports streaming services, allowing the stored music files to be accessed and distributed efficiently. There is a one-to-many relationship between canistore_id_domain and canistore_oss_bucket, where each artist’s space can link to multiple storage buckets. Furthermore, the storage is deployed on the EU subnet to ensure compliance with GDPR regulations.
 
@@ -72,13 +72,13 @@ Flow:
 
 ### IC's ECDSA signature service of Advantages
 
-1. Decentralized Key Management: Enhanced security without centralized points of failure.
-2. Seamless Smart Contract Integration: Direct ECDSA support within IC canisters.
-3. Cross-Chain Interoperability: Ability to interact with other blockchains like Bitcoin and Ethereum.
-4. Cost Efficiency: No need for external services or infrastructure, and free of gas fees.
-5. Scalability: High throughput and optimized for large volumes of transactions.
-6. Enhanced Security: Leveraging threshold cryptography for superior key protection.
-7. Transparency and Auditing: Verifiable and auditable signatures on-chain.
+1. [Decentralized Key Management] Enhanced security without centralized points of failure
+2. [Seamless Smart Contract Integration] Direct ECDSA support within IC canisters
+3. [Cross-Chain Interoperability] Ability to interact with other blockchains like Bitcoin and Ethereum
+4. [Cost Efficiency] No need for external services or infrastructure, and free of gas fees
+5. [Scalability] High throughput and optimized for large volumes of transactions
+6. [Enhanced Security] Leveraging threshold cryptography for superior key protection
+7. [Transparency and Auditing] Verifiable and auditable signatures on-chain
 
 
 ## Music Certificate System (MCS)
@@ -170,7 +170,7 @@ The MCS utilizes blockchain to create and issue certificates of ownership and co
 ## Decentralized Messaging
 --------------------------
 
-Decentralized Messaging refers to communication platforms or systems that operate without relying on a central authority or server. Instead, the system uses Internet Computer(IC) networks and peer-to-peer (P2P) protocols to facilitate secure, private, and censorship-resistant communication.
+Decentralized Messaging refers to communication platforms or systems that operate without relying on a central authority or server. Instead, the system uses Internet Computer (IC) networks and peer-to-peer (P2P) protocols to facilitate secure, private, and censorship-resistant communication.
 
 
 ### Introduction
