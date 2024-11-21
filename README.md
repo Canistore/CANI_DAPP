@@ -21,7 +21,7 @@ The platform consists of several key components:
 ```
 canistore_dao(DAO)
    |
-   |-- Manages & Creates --> cani_domain
+   |-- Manages & Creates --> cani_id_domain
                               |
                               |-- One-to-Many --> cani_oss_bucket (Cloud Storage & Streaming)
                               |
