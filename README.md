@@ -310,6 +310,16 @@ cani_platform: https://a4gq6-oaaaa-aaaab-qaa4q-cai.raw.icp0.io/?id=tfajn-gyaaa-a
 
 cani_user: https://a4gq6-oaaaa-aaaab-qaa4q-cai.raw.icp0.io/?id=tcbpz-laaaa-aaaas-akjna-cai
 
+### Frontend
+
+https://caniplay.app: clw7a-iyaaa-aaaas-akn2a-cai
+
+https://canistore.app: idlvv-gaaaa-aaaas-akmaq-cai
+
+http://id.canisafe.app: 35dny-6aaaa-aaaas-akqba-cai
+
+https://canisafe.app: iektb-lyaaa-aaaas-akmaa-cai
+
 ```
 
 ## Other
