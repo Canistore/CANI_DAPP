@@ -33,7 +33,8 @@ canistore_dao(DAO)
 ```
 
 <br />
-<h2>Technical Highlights</h2>
+
+# Technical Highlights
 
 ## 1. Canister File Fragmentation Transmission Scheme
 
@@ -302,6 +303,7 @@ This approach showcases how IC can revolutionize cloud storage and media streami
 
 
 <br />
+
 # System Deploy
 
 ### cani_dao
