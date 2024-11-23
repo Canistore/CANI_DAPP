@@ -32,7 +32,9 @@ canistore_dao(DAO)
                                                    |-- Provides Search & Matching --> Music Portal
 ```
 
-## Canister File Fragmentation Transmission Scheme
+#Technical Highlights:
+
+## 1. Canister File Fragmentation Transmission Scheme
 
 ### Overview
 This scheme aims to efficiently upload and download files by dividing them into fixed-size fragments using multi-threading technology while ensuring file security and supporting partial playback functionality. It is applicable to audio file formats such as mp3, wav, and flac.
@@ -62,7 +64,7 @@ This scheme aims to efficiently upload and download files by dividing them into 
 This scheme combines efficient file transmission technology and secure data handling methods, making it particularly suitable for scenarios where high requirements for file security and partial playback capabilities are needed.
 
   
-## Resource Authorization Management
+## 2. Resource Authorization Management
 
 It refers to the framework and design principles used to manage, control, and enforce access permissions for resources within CaniSafe. This architecture ensures that only authorized users, applications, or systems can access specific resources based on content policies and owner consent.
 
@@ -101,7 +103,7 @@ Flow:
 4. If valid, access to the requested resource (Resources / Music) is granted.
 ```
 
-### IC's ECDSA signature service of Advantages
+### 3. IC's ECDSA signature service of Advantages
 
 1. [Decentralized Key Management] Enhanced security without centralized points of failure
 2. [Seamless Smart Contract Integration] Direct ECDSA support within IC canisters
@@ -113,7 +115,7 @@ Flow:
 
 
   
-## Music Certificate System (MCS)
+## 4. Music Certificate System (MCS)
 
 The MCS utilizes blockchain to create and issue certificates of ownership and copyright through hashing. The method guarantees that each musical work is assigned a unique, tamper-resistant digital record, providing verification of its authenticity and ownership.
 
@@ -198,7 +200,7 @@ The MCS utilizes blockchain to create and issue certificates of ownership and co
 
 
   
-## Decentralized Messaging
+## 5. Decentralized Messaging
 
 Decentralized Messaging refers to communication platforms or systems that operate without relying on a central authority or server. Instead, the system uses Internet Computer (IC) networks and peer-to-peer (P2P) protocols to facilitate secure, private, and censorship-resistant communication.
 
@@ -267,7 +269,7 @@ The Decentralized Messaging System is a decentralized message management solutio
 
 
   
-## IC-Based OSS Cloud Storage and Music Streaming
+## 6. IC-Based OSS Cloud Storage and Music Streaming
 
 The **IC-based OSS Cloud Storage and Music Streaming System** is designed for secure, decentralized storage of large media files, specifically for music and audio. Leveraging the Internet Computer (IC) infrastructure, this solution utilizes decentralized Object Storage Service (OSS) canisters to store and retrieve audio data, while implementing **HttpStreamingResponse** for efficient, on-demand music streaming to users.
 
@@ -293,7 +295,8 @@ The **IC-based OSS Cloud Storage and Music Streaming System** is designed for se
 
 This approach showcases how IC can revolutionize cloud storage and media streaming, offering a robust alternative to centralized storage providers and traditional streaming architectures.
 
-## System Deploy
+
+# System Deploy
 
 ### cani_dao
 
