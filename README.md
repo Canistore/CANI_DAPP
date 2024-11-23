@@ -32,6 +32,34 @@ canistore_dao(DAO)
                                                    |-- Provides Search & Matching --> Music Portal
 ```
 
+### Canister File Fragmentation Transmission Scheme
+
+#### Overview
+This scheme aims to efficiently upload and download files by dividing them into fixed-size fragments using multi-threading technology while ensuring file security and supporting partial playback functionality. It is applicable to audio file formats such as mp3, wav, and flac.
+
+#### File Fragmentation and Upload
+
+- **Fragment Size**: Each fragment is set to 1.25MB to comply with the 2MB uplink/downlink limit of Canister files.
+- **Fragment Processing**: The front-end is responsible for slicing the user-selected file into 1.25MB segments. Before uploading, each fragment is converted into binary format and can be tagged with necessary metadata (such as fragment sequence number, file identifier, etc.).
+- **Parallel Upload**: Using multi-threading or multiple requests, the client can simultaneously upload multiple fragments, enhancing upload efficiency. It's important to reasonably set the concurrency level to avoid performance issues or server rate limiting due to excessive requests.
+
+#### Server-Side Handling
+
+- **Storage**: Upon receiving the fragments, the server stores them as-is, maintaining each fragment at 1.25MB without adding any file extensions. Fragments are stored with unique identifiers plus sequence numbers to ensure uniqueness.
+- **Index Management**: An index file is created to record all fragment information for each file, including fragment location, size, and order, facilitating subsequent download and playback operations.
+
+#### File Download and Playback
+
+- **Fragment Requests**: When a user requests to play a file, the client initiates multiple download requests based on the index file to fetch the required fragments. The multi-threaded download mechanism ensures seamless connection between consecutive fragments.
+- **Memory Reassembly**: The client reassembles the downloaded fragments in memory in binary format to form a complete audio file. For audio files, essential metadata (such as file type, sample rate, etc.) is embedded at the beginning to support progressive playback.
+- **Playback Support**: Currently, the scheme supports playback of common audio formats like mp3, wav, and flac. However, due to its non-standard streaming media parsing approach, background playback functionality is not fully realized.
+
+#### Security and Limitations
+
+- **Security**: This scheme enhances file security by storing files in fragmented form, making it difficult to reconstruct the entire file content even if part of the data is leaked.
+- **Limitations**: Compared to traditional streaming media services, this scheme has certain limitations in background playback functionality, primarily because of its unique fragment processing and reassembly mechanisms that differ from standard streaming protocols.
+
+This scheme combines efficient file transmission technology and secure data handling methods, making it particularly suitable for scenarios where high requirements for file security and partial playback capabilities are needed.
 
   
 ## Resource Authorization Management
