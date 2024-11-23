@@ -32,7 +32,8 @@ canistore_dao(DAO)
                                                    |-- Provides Search & Matching --> Music Portal
 ```
 
-#Technical Highlights:
+
+# Technical Highlights:
 
 ## 1. Canister File Fragmentation Transmission Scheme
 
