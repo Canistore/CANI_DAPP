@@ -310,7 +310,7 @@ cani_platform: https://a4gq6-oaaaa-aaaab-qaa4q-cai.raw.icp0.io/?id=tfajn-gyaaa-a
 
 cani_user: https://a4gq6-oaaaa-aaaab-qaa4q-cai.raw.icp0.io/?id=tcbpz-laaaa-aaaas-akjna-cai
 
-### Frontend
+### FRONTEND
 
 https://caniplay.app: clw7a-iyaaa-aaaas-akn2a-cai
 
