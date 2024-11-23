@@ -33,7 +33,7 @@ canistore_dao(DAO)
 ```
 
 <br />
-# Technical Highlights
+<h2>Technical Highlights</h2>
 
 ## 1. Canister File Fragmentation Transmission Scheme
 
