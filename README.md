@@ -19,7 +19,7 @@ The platform consists of several key components:
 5. cani_indexer: This component functions as the platform’s indexing service. It indexes information related to musicians, music resources, and users, enabling efficient matching and querying. The indexer plays a crucial role in powering the search functionality for the music portal, helping users to discover musicians and their works through a well-organized resource index.
 
 ```
-canistore_dao(DAO)
+cani_dao (DAO)
    |
    |-- Manages & Creates --> cani_id_domain
                               |
