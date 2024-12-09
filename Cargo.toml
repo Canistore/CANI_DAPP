@@ -4,6 +4,7 @@ members = [
     "src/canistore_user",
     "src/canistore_space",
     "src/canistore_platform",
+    "src/canistore_oss_bucket",
     "src/canistore_indexer",
     "src/canistore_types",
 ]

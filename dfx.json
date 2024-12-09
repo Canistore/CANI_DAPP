@@ -14,6 +14,12 @@
       "wasm": "wasm/canistore_space.wasm.gz",
       "init_arg": "opt variant { Init = record { status = 1; owner = principal \"tdfkf-xf7wx-b4qsu-6i425-temdg-kbxg5-eui42-xxnwb-mu23s-x5qlf-7ae\"; dao_canister = principal \"vght4-jyaaa-aaaag-aceyq-cai\"; enable_search_index = true; max_albums = 1000; name = \"MySpace\"; max_tracks = 20000; max_custom_data_size = 1024; visibility = 1; max_oss_data_size = 1099511627776:nat; env = variant { Test } }}"
     },
+    "canistore_oss_bucket": {
+      "candid": "src/canistore_oss_bucket/canistore_oss_bucket.did",
+      "package": "canistore_oss_bucket",
+      "optimize": "cycles",
+      "type": "rust"
+    },
     "canistore_user": {
       "candid": "src/canistore_user/canistore_user.did",
       "package": "canistore_user",
